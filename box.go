@@ -58,7 +58,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
 	chislo := len(b.shapes)
-	if chislo > i || i > 0 {
+	if chislo >= i || i > 0 {
 		result := b.shapes[i]
 		b.shapes[i] = shape
 		return result, nil
