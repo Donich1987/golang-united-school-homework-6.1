@@ -33,7 +33,6 @@ func (b *box) AddShape(shape Shape) error {
 // GetByIndex allows getting shape by index
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
-	chislo := len(b.shapes)
 	if  i < 0 {
 		return nil, errors.New("errors, GetByIndex")
 	}
