@@ -22,7 +22,7 @@ func NewBox(shapesCapacity int) *box {
 func (b *box) AddShape(shape Shape) error {
 	dlina := len(b.shapes)
 
-	if dlina =< b.shapesCapacity {
+	if dlina < b.shapesCapacity {
 		b.shapes = append(b.shapes, shape)
 		return nil
 	} else {
