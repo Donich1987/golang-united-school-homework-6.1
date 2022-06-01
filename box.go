@@ -34,7 +34,7 @@ func (b *box) AddShape(shape Shape) error {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
 	chislo := len(b.shapes)
-	if chislo <= i || i > 0 {
+	if chislo >= i || i > 0 {
 		return b.shapes[i], nil
 	} else {
 		return nil, errors.New("errors GetByIndex")
@@ -45,7 +45,7 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	chislo := len(b.shapes)
-	if chislo <= i || i > 0 {
+	if chislo >= i || i > 0 {
 		result := b.shapes[i]
 		b.shapes = append(b.shapes[0:i], b.shapes[i+1:]...)
 		return result, nil
@@ -58,7 +58,7 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
 	chislo := len(b.shapes)
-	if chislo <= i || i > 0 {
+	if chislo >= i || i > 0 {
 		result := b.shapes[i]
 		b.shapes[i] = shape
 		return result, nil
