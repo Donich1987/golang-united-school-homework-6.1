@@ -34,11 +34,10 @@ func (b *box) AddShape(shape Shape) error {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) GetByIndex(i int) (Shape, error) {
 	chislo := len(b.shapes)
-	if chislo > i || i > 0 {
-		return b.shapes[i], nil
-	} else {
-		return nil, errors.New("errors GetByIndex")
+	if chislo <= i || i < 0 {
+		return nil, errors.New("errors, GetByIndex")
 	}
+	return b.shapes[i], nil
 }
 
 // ExtractByIndex allows getting shape by index and removes this shape from the list.
