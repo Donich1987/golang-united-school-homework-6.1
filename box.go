@@ -45,10 +45,11 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
 	if b.shapesCapacity < i {
-		return nil, errors.New("there are fewer figures in the box than the index")
+		return nil, errors.New("error ExtractByIndex")
 	}
-	if i >= len(b.shapes) || i < 0 {
-		return nil, errors.New("the element does not exist")
+	chislo := len(b.shapes)
+	if i >= chislo || i < 0 {
+		return nil, errors.New("error ExtractByIndex")
 	} else {
 		result := b.shapes[i]
 		b.shapes = append(b.shapes[0:i], b.shapes[i+1:]...)
@@ -60,13 +61,16 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 // ReplaceByIndex allows replacing shape by index and returns removed shape.
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
+	if b.shapesCapacity < i {
+		return nil, errors.New("error ReplaceByIndex")
+	}
 	chislo := len(b.shapes)
-	if chislo >= i || i >= 0 {
+	if i >= chislo || i < 0 {
+		return nil, errors.New("error ReplaceByIndex")
+	} else {
 		result := b.shapes[i]
 		b.shapes[i] = shape
 		return result, nil
-	} else {
-		return nil, errors.New("errors ReplaceByIndex")
 	}
 }
 
