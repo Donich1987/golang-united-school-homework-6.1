@@ -44,9 +44,6 @@ func (b *box) GetByIndex(i int) (Shape, error) {
 // ExtractByIndex allows getting shape by index and removes this shape from the list.
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ExtractByIndex(i int) (Shape, error) {
-	if b.shapesCapacity < i {
-		return nil, errors.New("error ExtractByIndex")
-	}
 	chislo := len(b.shapes)
 	if i >= chislo || i < 0 {
 		return nil, errors.New("error ExtractByIndex")
@@ -61,9 +58,6 @@ func (b *box) ExtractByIndex(i int) (Shape, error) {
 // ReplaceByIndex allows replacing shape by index and returns removed shape.
 // whether shape by index doesn't exist or index went out of the range, then it returns an error
 func (b *box) ReplaceByIndex(i int, shape Shape) (Shape, error) {
-	if b.shapesCapacity < i {
-		return nil, errors.New("error ReplaceByIndex")
-	}
 	chislo := len(b.shapes)
 	if i >= chislo || i < 0 {
 		return nil, errors.New("error ReplaceByIndex")
